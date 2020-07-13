@@ -521,6 +521,7 @@ async function run() {
       }
 
       return octokit.request(latestCommentUrl).then(({ data }) => {
+        console.log(data);
         const { login: user } = data.user;
         const { body } = data;
 
