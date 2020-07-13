@@ -463,6 +463,7 @@ const configs = {
     "Don't close this issue. This is an automatic message by [Fresh](https://github.com/c-hive/fresh) - a bot against stale bots.",
 };
 
+// eslint-disable-next-line no-unused-vars
 function isBot(user, body) {
   const userMatch = regExes.botMatchers.users.some((userRegex) =>
     userRegex.test(user)
@@ -520,37 +521,38 @@ async function run() {
         });
       }
 
+      // eslint-disable-next-line no-unused-vars
       return octokit.request(latestCommentUrl).then(({ data }) => {
-        console.log(data);
-        const { login: user } = data.user;
-        const { body } = data;
+        console.log(latestCommentUrl);
+        //   const { login: user } = data.user;
+        //   const { body } = data;
 
-        if (!isBot(user, body)) {
-          return new Promise((resolve) => {
-            console.log("There's no stale bot comment for ", subjectUrl);
+        //   if (!isBot(user, body)) {
+        //     return new Promise((resolve) => {
+        //       console.log("There's no stale bot comment for ", subjectUrl);
 
-            resolve();
-          });
-        }
+        //       resolve();
+        //     });
+        //   }
 
-        console.log("Found stale bot comment: ", subjectUrl);
+        //   console.log("Found stale bot comment: ", subjectUrl);
 
-        if (devEnv) {
-          return new Promise((resolve) => {
-            console.log(
-              "Responding to stale bot comments is disabled in development environment."
-            );
+        //   if (devEnv) {
+        //     return new Promise((resolve) => {
+        //       console.log(
+        //         "Responding to stale bot comments is disabled in development environment."
+        //       );
 
-            resolve();
-          });
-        }
+        //       resolve();
+        //     });
+        //   }
 
-        const commentParams = regExes.commentUrlParams.exec(subjectUrl);
+        //   const commentParams = regExes.commentUrlParams.exec(subjectUrl);
 
-        return octokit.issues.createComment({
-          ...commentParams.groups,
-          body: configs.message,
-        });
+        //   return octokit.issues.createComment({
+        //     ...commentParams.groups,
+        //     body: configs.message,
+        //   });
       });
     });
 
