@@ -523,7 +523,8 @@ async function run() {
 
       // eslint-disable-next-line no-unused-vars
       return octokit.request(latestCommentUrl).then(({ data }) => {
-        console.log(latestCommentUrl);
+        console.log("latestCommentUrl: ", latestCommentUrl);
+        console.log("data: ", data);
         //   const { login: user } = data.user;
         //   const { body } = data;
 
